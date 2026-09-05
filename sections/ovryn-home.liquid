@@ -260,8 +260,9 @@
   </section>
 
 
-  <!-- ================= FEATURED COLLECTION ================= -->
+  <!-- ================= FEATURED COLLECTION (hidden on homepage) ================= -->
 
+  {% comment %}
   <section class="ovryn-products ovryn-reveal">
 
     <div class="ovryn-section-header">
@@ -382,6 +383,7 @@
     {% endif %}
 
   </section>
+  {% endcomment %}
 
 
   <!-- ================= STATEMENT ================= -->
@@ -661,6 +663,18 @@
 
           <a href="mailto:{{ section.settings.contact_email }}">
             {{ section.settings.contact_email }}
+          </a>
+
+        {% endif %}
+
+        {% if section.settings.contact_phone != blank %}
+
+          <a
+            href="https://wa.me/91{{ section.settings.contact_phone }}"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {{ section.settings.contact_phone }} (WhatsApp only)
           </a>
 
         {% endif %}
@@ -2339,6 +2353,31 @@
 
   }
 
+
+  /* ABOUT-ONLY VIEW */
+  /* There is no separate About page yet, so #about is an anchor on
+     this same homepage. Landing on it should show only the header,
+     the About/Intro content, and the footer -- not the rest of the
+     homepage (hero, marquee, statement, tees, newsletter). */
+
+  var aboutOnlySections = root.querySelectorAll(
+    '.ovryn-hero, .ovryn-marquee, .ovryn-statement, .ovryn-tees, .ovryn-newsletter'
+  );
+
+  function applyAboutView() {
+
+    var isAbout = window.location.hash === '#about';
+
+    aboutOnlySections.forEach(function(section) {
+      section.style.display = isAbout ? 'none' : '';
+    });
+
+  }
+
+  applyAboutView();
+
+  window.addEventListener('hashchange', applyAboutView);
+
 })();
 
 </script>
@@ -2486,6 +2525,13 @@
       "type": "text",
       "id": "contact_email",
       "label": "Contact Email"
+    },
+
+    {
+      "type": "text",
+      "id": "contact_phone",
+      "label": "Contact Phone (WhatsApp)",
+      "info": "10-digit number, no country code. Shown as WhatsApp-only."
     }
 
   ],

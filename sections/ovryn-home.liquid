@@ -832,7 +832,7 @@
 }
 
 #ovryn-{{ section.id }} .ovryn-menu-open {
-  display:none;
+  display:block;
 
   width:40px;
   height:40px;
@@ -841,6 +841,7 @@
   border:0;
 
   background:transparent;
+  cursor:pointer;
 }
 
 #ovryn-{{ section.id }} .ovryn-menu-open span {
@@ -2063,7 +2064,7 @@
   /* STATEMENT */
 
   #ovryn-{{ section.id }} .ovryn-statement {
-    min-height:610px;
+    min-height:0;
   }
 
   #ovryn-{{ section.id }} .ovryn-statement-content {

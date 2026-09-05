@@ -26,7 +26,7 @@
     </a>
 
     <nav class="ovryn-nav">
-      <a href="{{ shop_collection_url }}">SHOP</a>
+      <a href="{{ routes.root_url }}#shop">SHOP</a>
 
       <a href="{% if tees_collection != blank %}{{ tees_collection.url }}{% else %}{{ shop_collection_url }}{% endif %}">
         TEES
@@ -73,7 +73,7 @@
 
     <nav class="ovryn-mobile-links">
 
-      <a href="{{ shop_collection_url }}">
+      <a href="{{ routes.root_url }}#shop">
         <small>01</small>
         SHOP
       </a>
@@ -260,10 +260,9 @@
   </section>
 
 
-  <!-- ================= FEATURED COLLECTION (hidden on homepage) ================= -->
+  <!-- ================= SHOP (isolated view, hidden unless #shop) ================= -->
 
-  {% comment %}
-  <section class="ovryn-products ovryn-reveal">
+  <section class="ovryn-products" style="display:none;">
 
     <div class="ovryn-section-header">
 
@@ -383,7 +382,6 @@
     {% endif %}
 
   </section>
-  {% endcomment %}
 
 
   <!-- ================= STATEMENT ================= -->
@@ -2354,29 +2352,48 @@
   }
 
 
-  /* ABOUT-ONLY VIEW */
-  /* There is no separate About page yet, so #about is an anchor on
-     this same homepage. Landing on it should show only the header,
-     the About/Intro content, and the footer -- not the rest of the
-     homepage (hero, marquee, statement, tees, newsletter). */
+  /* ISOLATED VIEWS: ABOUT / SHOP */
+  /* There is no separate About or Shop page yet, so #about and
+     #shop are anchors on this same homepage. Landing on either
+     should show only the header, that one section's content, and
+     the footer -- not the rest of the homepage. With neither hash,
+     the normal homepage shows (hero, marquee, about, statement,
+     tees, newsletter) and the shop product grid stays hidden. */
 
-  var aboutOnlySections = root.querySelectorAll(
-    '.ovryn-hero, .ovryn-marquee, .ovryn-statement, .ovryn-tees, .ovryn-newsletter'
-  );
+  var isolatable = {
+    hero: root.querySelector('.ovryn-hero'),
+    marquee: root.querySelector('.ovryn-marquee'),
+    about: root.querySelector('.ovryn-intro'),
+    statement: root.querySelector('.ovryn-statement'),
+    tees: root.querySelector('.ovryn-tees'),
+    newsletter: root.querySelector('.ovryn-newsletter'),
+    shop: root.querySelector('.ovryn-products')
+  };
 
-  function applyAboutView() {
+  function applyIsolatedView() {
 
-    var isAbout = window.location.hash === '#about';
+    var hash = window.location.hash;
+    var onlyKey = hash === '#about' ? 'about' : (hash === '#shop' ? 'shop' : null);
 
-    aboutOnlySections.forEach(function(section) {
-      section.style.display = isAbout ? 'none' : '';
+    Object.keys(isolatable).forEach(function(key) {
+
+      var section = isolatable[key];
+
+      if (!section) return;
+
+      if (!onlyKey) {
+        section.style.display = key === 'shop' ? 'none' : '';
+      } else {
+        section.style.display = key === onlyKey ? '' : 'none';
+      }
+
     });
 
   }
 
-  applyAboutView();
+  applyIsolatedView();
 
-  window.addEventListener('hashchange', applyAboutView);
+  window.addEventListener('hashchange', applyIsolatedView);
 
 })();
 

@@ -549,6 +549,8 @@
 
   <!-- ================= FOOTER ================= -->
 
+  {% unless template == 'cart' or template == 'collection' %}
+
   <footer class="ovryn-footer">
 
     <div class="ovryn-footer-brand-row">
@@ -697,6 +699,8 @@
     </div>
 
   </footer>
+
+  {% endunless %}
 
 </div>
 

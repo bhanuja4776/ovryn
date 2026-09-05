@@ -33,7 +33,7 @@
       </a>
 
       {% if section.settings.about_page != blank %}
-        <a href="{{ section.settings.about_page.url }}">ABOUT</a>
+        <a href="{{ section.settings.about_page }}">ABOUT</a>
       {% else %}
         <a href="{{ routes.root_url }}#about">ABOUT</a>
       {% endif %}
@@ -84,7 +84,7 @@
       </a>
 
       {% if section.settings.about_page != blank %}
-        <a href="{{ section.settings.about_page.url }}">
+        <a href="{{ section.settings.about_page }}">
           <small>03</small>
           ABOUT
         </a>
@@ -239,7 +239,7 @@
 
         {% if section.settings.about_page != blank %}
 
-          <a href="{{ section.settings.about_page.url }}">
+          <a href="{{ section.settings.about_page }}">
             DISCOVER OVRYN ↗
           </a>
 
@@ -343,7 +343,7 @@
 
                 {% if product.available %}
 
-                  <p>AVAILABLE NOW</p>
+                  <p class="ovryn-available">AVAILABLE NOW</p>
 
                 {% else %}
 
@@ -590,25 +590,25 @@
         <span>INFO</span>
 
         {% if section.settings.about_page != blank %}
-          <a href="{{ section.settings.about_page.url }}">
+          <a href="{{ section.settings.about_page }}">
             ABOUT
           </a>
         {% endif %}
 
         {% if section.settings.contact_page != blank %}
-          <a href="{{ section.settings.contact_page.url }}">
+          <a href="{{ section.settings.contact_page }}">
             CONTACT
           </a>
         {% endif %}
 
         {% if section.settings.shipping_policy != blank %}
-          <a href="{{ section.settings.shipping_policy.url }}">
+          <a href="{{ section.settings.shipping_policy }}">
             SHIPPING
           </a>
         {% endif %}
 
         {% if section.settings.returns_page != blank %}
-          <a href="{{ section.settings.returns_page.url }}">
+          <a href="{{ section.settings.returns_page }}">
             RETURNS &amp; EXCHANGES
           </a>
         {% endif %}
@@ -679,13 +679,13 @@
       </span>
 
       {% if section.settings.privacy_policy != blank %}
-        <a href="{{ section.settings.privacy_policy.url }}">
+        <a href="{{ section.settings.privacy_policy }}">
           PRIVACY
         </a>
       {% endif %}
 
       {% if section.settings.terms_policy != blank %}
-        <a href="{{ section.settings.terms_policy.url }}">
+        <a href="{{ section.settings.terms_policy }}">
           TERMS
         </a>
       {% endif %}
@@ -704,6 +704,8 @@
   --white:#f4f4f0;
   --grey:#777;
   --border:rgba(255,255,255,.13);
+  --hazel:#a9762f;
+  --hazel-light:#d6ab63;
 
   width:100%;
   max-width:100%;
@@ -774,16 +776,16 @@
 #ovryn-{{ section.id }} .ovryn-nav a,
 #ovryn-{{ section.id }} .ovryn-cart,
 #ovryn-{{ section.id }} .ovryn-search {
-  font-size:9px;
+  font-size:10px;
   font-weight:700;
   letter-spacing:.17em;
-  transition:opacity .25s ease;
+  transition:color .25s ease;
 }
 
 #ovryn-{{ section.id }} .ovryn-nav a:hover,
 #ovryn-{{ section.id }} .ovryn-cart:hover,
 #ovryn-{{ section.id }} .ovryn-search:hover {
-  opacity:.6;
+  color:var(--hazel-light);
 }
 
 #ovryn-{{ section.id }} .ovryn-actions {
@@ -806,7 +808,7 @@
 #ovryn-{{ section.id }} .ovryn-cart sup {
   position:relative;
   top:-4px;
-  font-size:7px;
+  font-size:8px;
 }
 
 #ovryn-{{ section.id }} .ovryn-menu-open {
@@ -870,7 +872,7 @@
   display:flex;
   justify-content:space-between;
 
-  font-size:8px;
+  font-size:9px;
   letter-spacing:.18em;
 }
 
@@ -879,7 +881,7 @@
   background:none;
   color:#fff;
 
-  font-size:8px;
+  font-size:9px;
   letter-spacing:.15em;
 }
 
@@ -904,14 +906,19 @@
 }
 
 #ovryn-{{ section.id }} .ovryn-mobile-links small {
-  font-size:7px;
+  color:var(--hazel-light);
+  font-size:8px;
   letter-spacing:.1em;
 }
 
-#ovryn-{{ section.id }} .ovryn-mobile-bottom {
-  color:#666;
+#ovryn-{{ section.id }} .ovryn-mobile-links a:active {
+  color:var(--hazel-light);
+}
 
-  font-size:8px;
+#ovryn-{{ section.id }} .ovryn-mobile-bottom {
+  color:#999;
+
+  font-size:9px;
   letter-spacing:.17em;
 }
 
@@ -964,9 +971,9 @@
 
   background:#101010;
 
-  color:#666;
+  color:#999;
 
-  font-size:9px;
+  font-size:10px;
   letter-spacing:.2em;
 }
 
@@ -1001,7 +1008,7 @@
   display:grid;
   grid-template-columns:1fr 1fr 1fr;
 
-  font-size:8px;
+  font-size:9px;
   font-weight:700;
   letter-spacing:.18em;
 }
@@ -1025,7 +1032,7 @@
 #ovryn-{{ section.id }} .ovryn-kicker {
   margin-bottom:22px;
 
-  font-size:9px;
+  font-size:10px;
   font-weight:700;
   letter-spacing:.3em;
 }
@@ -1048,7 +1055,7 @@
 
   font-style:normal;
 
-  -webkit-text-stroke:1.2px rgba(255,255,255,.9);
+  -webkit-text-stroke:1.2px rgba(169,118,47,.95);
 }
 
 #ovryn-{{ section.id }} .ovryn-button {
@@ -1064,21 +1071,23 @@
   margin-top:48px;
   padding:0 18px;
 
-  border:1px solid rgba(255,255,255,.55);
+  border:1px solid rgba(169,118,47,.7);
 
-  font-size:8px;
+  font-size:11px;
   font-weight:700;
   letter-spacing:.17em;
 
   transition:
     background .3s ease,
     color .3s ease,
+    border-color .3s ease,
     transform .3s ease;
 }
 
 #ovryn-{{ section.id }} .ovryn-button:hover {
-  background:#fff;
-  color:#050505;
+  background:var(--hazel);
+  border-color:var(--hazel);
+  color:var(--black);
   transform:translateY(-3px);
 }
 
@@ -1089,7 +1098,7 @@
 
   gap:13px;
 
-  font-size:7px;
+  font-size:8px;
   letter-spacing:.18em;
 }
 
@@ -1099,7 +1108,7 @@
   width:1px;
   height:42px;
 
-  background:#aaa;
+  background:var(--hazel-light);
 
   animation:ovrynScroll 1.8s ease-in-out infinite;
 }
@@ -1130,7 +1139,7 @@
 
   gap:25px;
 
-  font-size:9px;
+  font-size:10px;
   font-weight:700;
   letter-spacing:.2em;
 
@@ -1138,8 +1147,8 @@
 }
 
 #ovryn-{{ section.id }} .ovryn-marquee-track b {
-  color:#666;
-  font-size:7px;
+  color:var(--hazel);
+  font-size:8px;
 }
 
 @keyframes ovrynMarquee {
@@ -1164,7 +1173,7 @@
 #ovryn-{{ section.id }} .ovryn-label {
   color:#888;
 
-  font-size:8px;
+  font-size:9px;
   font-weight:700;
   letter-spacing:.2em;
 }
@@ -1219,7 +1228,7 @@
 
   border-bottom:1px solid #777;
 
-  font-size:8px;
+  font-size:11px;
   font-weight:700;
   letter-spacing:.17em;
 }
@@ -1242,7 +1251,7 @@
 #ovryn-{{ section.id }} .ovryn-section-header span {
   color:#777;
 
-  font-size:8px;
+  font-size:9px;
   font-weight:700;
   letter-spacing:.18em;
 }
@@ -1318,9 +1327,10 @@
 
   padding:13px;
 
-  background:rgba(0,0,0,.78);
+  background:rgba(169,118,47,.92);
+  color:var(--black);
 
-  font-size:7px;
+  font-size:10px;
   font-weight:700;
   letter-spacing:.16em;
 
@@ -1353,21 +1363,25 @@
 #ovryn-{{ section.id }} .ovryn-product-info h3 {
   margin:0 0 7px;
 
-  font-size:11px;
+  font-size:13px;
   font-weight:700;
 }
 
 #ovryn-{{ section.id }} .ovryn-product-info p {
   margin:0;
 
-  color:#666;
+  color:#999;
 
-  font-size:6px;
+  font-size:10px;
   letter-spacing:.15em;
 }
 
+#ovryn-{{ section.id }} .ovryn-product-info p.ovryn-available {
+  color:var(--hazel-light);
+}
+
 #ovryn-{{ section.id }} .ovryn-product-info strong {
-  font-size:9px;
+  font-size:13px;
   white-space:nowrap;
 }
 
@@ -1456,7 +1470,7 @@
 
   color:#777;
 
-  font-size:8px;
+  font-size:9px;
   letter-spacing:.18em;
 }
 
@@ -1529,7 +1543,7 @@
 #ovryn-{{ section.id }} .ovryn-tees-center span {
   margin-bottom:18px;
 
-  font-size:8px;
+  font-size:9px;
   font-weight:700;
   letter-spacing:.22em;
 }
@@ -1563,7 +1577,7 @@
 #ovryn-{{ section.id }} .ovryn-tees-placeholder small {
   color:#777;
 
-  font-size:7px;
+  font-size:8px;
   letter-spacing:.18em;
 }
 
@@ -1582,7 +1596,7 @@
 
   color:#777;
 
-  font-size:8px;
+  font-size:9px;
   letter-spacing:.18em;
 }
 
@@ -1628,7 +1642,7 @@
 
   color:#777;
 
-  font-size:7px;
+  font-size:10px;
   letter-spacing:.18em;
 }
 
@@ -1636,6 +1650,12 @@
   display:flex;
 
   border-bottom:1px solid #777;
+
+  transition:border-color .3s ease;
+}
+
+#ovryn-{{ section.id }} .ovryn-email-row:focus-within {
+  border-bottom-color:var(--hazel-light);
 }
 
 #ovryn-{{ section.id }} .ovryn-email-row input {
@@ -1654,7 +1674,7 @@
 
   color:#fff;
 
-  font-size:10px;
+  font-size:11px;
 }
 
 #ovryn-{{ section.id }} .ovryn-email-row button {
@@ -1666,25 +1686,35 @@
 
   cursor:pointer;
 
-  font-size:7px;
+  font-size:10px;
   font-weight:700;
   letter-spacing:.15em;
+
+  transition:color .3s ease;
+}
+
+#ovryn-{{ section.id }} .ovryn-email-row button:hover {
+  color:var(--hazel-light);
+}
+
+#ovryn-{{ section.id }} .ovryn-success {
+  color:var(--hazel-light);
 }
 
 #ovryn-{{ section.id }} .ovryn-success,
 #ovryn-{{ section.id }} .ovryn-error {
   margin-top:15px;
 
-  font-size:8px;
+  font-size:9px;
   letter-spacing:.12em;
 }
 
 #ovryn-{{ section.id }} .ovryn-newsletter-note {
   margin-top:20px;
 
-  color:#555;
+  color:#999;
 
-  font-size:6px;
+  font-size:8px;
   letter-spacing:.16em;
 }
 
@@ -1722,7 +1752,7 @@
 
   color:#777;
 
-  font-size:8px;
+  font-size:9px;
   line-height:1.6;
 
   text-align:right;
@@ -1752,20 +1782,22 @@
 #ovryn-{{ section.id }} .ovryn-footer-column > span {
   margin-bottom:10px;
 
-  color:#666;
+  color:#999;
 
-  font-size:7px;
+  font-size:8px;
   font-weight:700;
   letter-spacing:.18em;
 }
 
 #ovryn-{{ section.id }} .ovryn-footer-column a {
-  font-size:8px;
+  font-size:11px;
   letter-spacing:.08em;
+
+  transition:color .3s ease;
 }
 
 #ovryn-{{ section.id }} .ovryn-footer-column a:hover {
-  color:#777;
+  color:var(--hazel-light);
 }
 
 #ovryn-{{ section.id }} .ovryn-footer-bottom {
@@ -1776,10 +1808,18 @@
 
   padding-top:20px;
 
-  color:#555;
+  color:#999;
 
-  font-size:6px;
+  font-size:9px;
   letter-spacing:.14em;
+}
+
+#ovryn-{{ section.id }} .ovryn-footer-bottom a {
+  transition:color .3s ease;
+}
+
+#ovryn-{{ section.id }} .ovryn-footer-bottom a:hover {
+  color:var(--hazel-light);
 }
 
 
@@ -1850,7 +1890,7 @@
   }
 
   #ovryn-{{ section.id }} .ovryn-cart {
-    font-size:7px;
+    font-size:8px;
   }
 
   #ovryn-{{ section.id }} .ovryn-menu-open {
@@ -1875,7 +1915,7 @@
     display:flex;
     justify-content:space-between;
 
-    font-size:6px;
+    font-size:8px;
   }
 
   #ovryn-{{ section.id }} .ovryn-hero-meta span:nth-child(2) {
@@ -1885,7 +1925,7 @@
   #ovryn-{{ section.id }} .ovryn-kicker {
     margin-bottom:17px;
 
-    font-size:6px;
+    font-size:9px;
   }
 
   #ovryn-{{ section.id }} .ovryn-hero h1 {
@@ -1901,7 +1941,7 @@
   }
 
   #ovryn-{{ section.id }} .ovryn-scroll {
-    font-size:6px;
+    font-size:8px;
   }
 
 
@@ -1914,7 +1954,7 @@
   #ovryn-{{ section.id }} .ovryn-marquee-track {
     gap:18px;
 
-    font-size:7px;
+    font-size:9px;
 
     animation-duration:20s;
   }
@@ -1972,7 +2012,7 @@
   }
 
   #ovryn-{{ section.id }} .ovryn-section-header > a {
-    font-size:6px;
+    font-size:10px;
   }
 
   #ovryn-{{ section.id }} .ovryn-product-grid {
@@ -2017,7 +2057,7 @@
   }
 
   #ovryn-{{ section.id }} .ovryn-statement-footer {
-    font-size:6px;
+    font-size:8px;
   }
 
 
@@ -2036,7 +2076,7 @@
   }
 
   #ovryn-{{ section.id }} .ovryn-tees-center span {
-    font-size:6px;
+    font-size:8px;
   }
 
 
@@ -2047,7 +2087,7 @@
   }
 
   #ovryn-{{ section.id }} .ovryn-newsletter-top {
-    font-size:6px;
+    font-size:8px;
   }
 
   #ovryn-{{ section.id }} .ovryn-newsletter-main {
@@ -2063,7 +2103,7 @@
   #ovryn-{{ section.id }} .ovryn-email-row input {
     height:52px;
 
-    font-size:8px;
+    font-size:10px;
   }
 
 
@@ -2090,7 +2130,7 @@
 
     text-align:left;
 
-    font-size:7px;
+    font-size:9px;
   }
 
   #ovryn-{{ section.id }} .ovryn-footer-grid {
@@ -2102,7 +2142,7 @@
   }
 
   #ovryn-{{ section.id }} .ovryn-footer-column a {
-    font-size:7px;
+    font-size:10px;
   }
 
   #ovryn-{{ section.id }} .ovryn-footer-bottom {
@@ -2112,7 +2152,7 @@
 
     gap:12px;
 
-    font-size:5px;
+    font-size:9px;
   }
 
   #ovryn-{{ section.id }} .ovryn-footer-bottom span:nth-child(2) {
@@ -2267,6 +2307,18 @@
 
       observer.observe(element);
 
+      /* Safety net: guarantee the section becomes visible even if this
+         browser's IntersectionObserver never reports an intersection
+         (seen in some embedded/sandboxed preview contexts), so content
+         can never stay permanently hidden. */
+      setTimeout(function() {
+
+        element.classList.add('ovryn-visible');
+
+        observer.unobserve(element);
+
+      }, 1200);
+
     });
 
   } else {
@@ -2363,21 +2415,21 @@
     },
 
     {
-      "type": "page",
+      "type": "url",
       "id": "about_page",
-      "label": "About Page"
+      "label": "About Page Link"
     },
 
     {
-      "type": "page",
+      "type": "url",
       "id": "contact_page",
-      "label": "Contact Page"
+      "label": "Contact Page Link"
     },
 
     {
-      "type": "page",
+      "type": "url",
       "id": "returns_page",
-      "label": "Return & Exchange Page"
+      "label": "Return & Exchange Page Link"
     },
 
 

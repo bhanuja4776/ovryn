@@ -549,7 +549,7 @@
 
   <!-- ================= FOOTER ================= -->
 
-  {% unless template == 'cart' or template == 'collection' or template == 'product' %}
+  {% if template == 'index' %}
 
   <footer class="ovryn-footer">
 
@@ -700,7 +700,7 @@
 
   </footer>
 
-  {% endunless %}
+  {% endif %}
 
 </div>
 

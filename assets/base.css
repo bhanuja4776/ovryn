@@ -1646,6 +1646,11 @@ details[open] > .share-button__fallback {
   color: rgba(var(--color-foreground), 0.75);
 }
 
+.select__select option {
+  color: #0a0a0a;
+  background-color: #f4f2ee;
+}
+
 .field:hover.field:after,
 .select:hover.select:after,
 .select__select:hover.select__select:after,

@@ -1,0 +1,2441 @@
+{% comment %}
+  OVRYN — COMPLETE SHOPIFY HOMEPAGE
+  Dark / Premium / Futuristic Streetwear
+  Navigation-safe version
+{% endcomment %}
+
+{% assign tees_collection = section.settings.tees_collection %}
+{% assign featured_collection = section.settings.featured_collection %}
+
+{% if tees_collection != blank %}
+  {% assign shop_collection_url = tees_collection.url %}
+{% elsif featured_collection != blank %}
+  {% assign shop_collection_url = featured_collection.url %}
+{% else %}
+  {% assign shop_collection_url = routes.all_products_collection_url %}
+{% endif %}
+
+<div id="ovryn-{{ section.id }}" class="ovryn-site">
+
+  <!-- ================= HEADER ================= -->
+
+  <header class="ovryn-header">
+
+    <a href="{{ routes.root_url }}" class="ovryn-logo">
+      OVRYN
+    </a>
+
+    <nav class="ovryn-nav">
+      <a href="{{ shop_collection_url }}">SHOP</a>
+
+      <a href="{% if tees_collection != blank %}{{ tees_collection.url }}{% else %}{{ shop_collection_url }}{% endif %}">
+        TEES
+      </a>
+
+      {% if section.settings.about_page != blank %}
+        <a href="{{ section.settings.about_page.url }}">ABOUT</a>
+      {% else %}
+        <a href="{{ routes.root_url }}#about">ABOUT</a>
+      {% endif %}
+    </nav>
+
+    <div class="ovryn-actions">
+
+      <a href="{{ routes.search_url }}" class="ovryn-search" aria-label="Search">
+        <svg viewBox="0 0 24 24">
+          <circle cx="10.8" cy="10.8" r="6.5"></circle>
+          <path d="M15.7 15.7L21 21"></path>
+        </svg>
+      </a>
+
+      <a href="{{ routes.cart_url }}" class="ovryn-cart">
+        CART <sup>{{ cart.item_count }}</sup>
+      </a>
+
+      <button class="ovryn-menu-open" type="button" aria-label="Open menu">
+        <span></span>
+        <span></span>
+      </button>
+
+    </div>
+
+  </header>
+
+
+  <!-- ================= MOBILE MENU ================= -->
+
+  <div class="ovryn-mobile-menu">
+
+    <div class="ovryn-mobile-top">
+      <span>OVRYN / MENU</span>
+      <button type="button" class="ovryn-menu-close">CLOSE</button>
+    </div>
+
+    <nav class="ovryn-mobile-links">
+
+      <a href="{{ shop_collection_url }}">
+        <small>01</small>
+        SHOP
+      </a>
+
+      <a href="{% if tees_collection != blank %}{{ tees_collection.url }}{% else %}{{ shop_collection_url }}{% endif %}">
+        <small>02</small>
+        TEES
+      </a>
+
+      {% if section.settings.about_page != blank %}
+        <a href="{{ section.settings.about_page.url }}">
+          <small>03</small>
+          ABOUT
+        </a>
+      {% else %}
+        <a href="{{ routes.root_url }}#about">
+          <small>03</small>
+          ABOUT
+        </a>
+      {% endif %}
+
+      <a href="{{ routes.search_url }}">
+        <small>04</small>
+        SEARCH
+      </a>
+
+      <a href="{{ routes.cart_url }}">
+        <small>05</small>
+        CART
+      </a>
+
+    </nav>
+
+    <div class="ovryn-mobile-bottom">
+      {{ section.settings.tagline }}
+    </div>
+
+  </div>
+
+
+  <!-- ================= HERO ================= -->
+
+  <section class="ovryn-hero">
+
+    {% if section.settings.hero_image != blank %}
+
+      <img
+        class="ovryn-hero-image"
+        src="{{ section.settings.hero_image | image_url: width: 2400 }}"
+        srcset="
+          {{ section.settings.hero_image | image_url: width: 750 }} 750w,
+          {{ section.settings.hero_image | image_url: width: 1200 }} 1200w,
+          {{ section.settings.hero_image | image_url: width: 1800 }} 1800w,
+          {{ section.settings.hero_image | image_url: width: 2400 }} 2400w
+        "
+        sizes="100vw"
+        width="{{ section.settings.hero_image.width }}"
+        height="{{ section.settings.hero_image.height }}"
+        alt="{{ section.settings.hero_image.alt | escape }}"
+        loading="eager"
+        fetchpriority="high"
+      >
+
+    {% else %}
+
+      <div class="ovryn-placeholder">
+        UPLOAD HERO IMAGE
+      </div>
+
+    {% endif %}
+
+    <div class="ovryn-hero-overlay"></div>
+
+    <div class="ovryn-hero-content">
+
+      <div class="ovryn-hero-meta">
+        <span>OVRYN / EST. 2026</span>
+        <span>{{ section.settings.tagline }}</span>
+        <span>NOT FOR EVERYONE.</span>
+      </div>
+
+      <div class="ovryn-hero-center">
+
+        <div class="ovryn-kicker">
+          NOT FOR EVERYONE.
+        </div>
+
+        <h1>
+          UNFOLLOW
+          <em>THE MID.</em>
+        </h1>
+
+        <a href="{% if featured_collection != blank %}{{ featured_collection.url }}{% else %}{{ shop_collection_url }}{% endif %}" class="ovryn-button">
+          <span>{{ section.settings.hero_button_text }}</span>
+          <span>↗</span>
+        </a>
+
+      </div>
+
+      <div class="ovryn-scroll">
+        SCROLL TO EXPLORE
+        <i></i>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= MARQUEE ================= -->
+
+  <section class="ovryn-marquee">
+
+    <div class="ovryn-marquee-track">
+      <span>OVRYN</span>
+      <b>✦</b>
+      <span>UNFOLLOWING THE MID.</span>
+      <b>✦</b>
+      <span>OVRYN</span>
+      <b>✦</b>
+      <span>UNFOLLOWING THE MID.</span>
+      <b>✦</b>
+      <span>OVRYN</span>
+      <b>✦</b>
+      <span>UNFOLLOWING THE MID.</span>
+      <b>✦</b>
+      <span>OVRYN</span>
+      <b>✦</b>
+      <span>UNFOLLOWING THE MID.</span>
+      <b>✦</b>
+    </div>
+
+  </section>
+
+
+  <!-- ================= ABOUT / INTRO ================= -->
+
+  <section id="about" class="ovryn-intro ovryn-reveal">
+
+    <div class="ovryn-number">
+      01 / IDENTITY
+    </div>
+
+    <div class="ovryn-intro-content">
+
+      <div class="ovryn-label">
+        THE BRAND
+      </div>
+
+      <h2>
+        ORDINARY<br>
+        <em>IS NOT</em><br>
+        THE GOAL.
+      </h2>
+
+      <div class="ovryn-intro-bottom">
+
+        <p>
+          OVRYN exists outside the algorithm.
+          Designed for those who refuse to blend
+          into the middle.
+        </p>
+
+        {% if section.settings.about_page != blank %}
+
+          <a href="{{ section.settings.about_page.url }}">
+            DISCOVER OVRYN ↗
+          </a>
+
+        {% else %}
+
+          <a href="#about">
+            DISCOVER OVRYN ↗
+          </a>
+
+        {% endif %}
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= FEATURED COLLECTION ================= -->
+
+  <section class="ovryn-products ovryn-reveal">
+
+    <div class="ovryn-section-header">
+
+      <div>
+        <span>02 / THE DROP</span>
+        <h2>THE DROP.</h2>
+      </div>
+
+      {% if featured_collection != blank %}
+
+        <a href="{{ featured_collection.url }}">
+          VIEW ALL ↗
+        </a>
+
+      {% endif %}
+
+    </div>
+
+
+    {% if featured_collection != blank and featured_collection.products_count > 0 %}
+
+      <div class="ovryn-product-grid">
+
+        {% for product in featured_collection.products limit: section.settings.product_limit %}
+
+          <article class="ovryn-product-card">
+
+            <a
+              href="{{ product.url }}"
+              class="ovryn-product-image-wrap"
+              aria-label="{{ product.title | escape }}"
+            >
+
+              {% if product.featured_image != blank %}
+
+                <img
+                  class="ovryn-product-image ovryn-main-image"
+                  src="{{ product.featured_image | image_url: width: 1000 }}"
+                  width="{{ product.featured_image.width }}"
+                  height="{{ product.featured_image.height }}"
+                  alt="{{ product.featured_image.alt | default: product.title | escape }}"
+                  loading="lazy"
+                >
+
+                {% if product.images.size > 1 %}
+
+                  <img
+                    class="ovryn-product-image ovryn-hover-image"
+                    src="{{ product.images[1] | image_url: width: 1000 }}"
+                    width="{{ product.images[1].width }}"
+                    height="{{ product.images[1].height }}"
+                    alt="{{ product.title | escape }}"
+                    loading="lazy"
+                  >
+
+                {% endif %}
+
+              {% else %}
+
+                <div class="ovryn-product-placeholder">
+                  OVRYN
+                </div>
+
+              {% endif %}
+
+              <span class="ovryn-view-product">
+                VIEW PRODUCT ↗
+              </span>
+
+            </a>
+
+
+            <div class="ovryn-product-info">
+
+              <div>
+
+                <h3>
+                  {{ product.title }}
+                </h3>
+
+                {% if product.available %}
+
+                  <p>AVAILABLE NOW</p>
+
+                {% else %}
+
+                  <p>SOLD OUT</p>
+
+                {% endif %}
+
+              </div>
+
+              <strong>
+                {{ product.price | money }}
+              </strong>
+
+            </div>
+
+          </article>
+
+        {% endfor %}
+
+      </div>
+
+    {% else %}
+
+      <div class="ovryn-empty">
+
+        <strong>THE DROP</strong>
+
+        <p>
+          Select your T-shirt collection in the Theme Editor.
+        </p>
+
+      </div>
+
+    {% endif %}
+
+  </section>
+
+
+  <!-- ================= STATEMENT ================= -->
+
+  <section class="ovryn-statement ovryn-reveal">
+
+    <div class="ovryn-statement-bg"></div>
+
+    <div class="ovryn-statement-content">
+
+      <div class="ovryn-label">
+        03 / MINDSET
+      </div>
+
+      <h2>
+        UNFOLLOW<br>
+        <em>THE MID.</em>
+      </h2>
+
+      <div class="ovryn-statement-footer">
+        <span>OVRYN</span>
+        <span>THERE IS NO MIDDLE.</span>
+        <span>2026</span>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= TEES ================= -->
+
+  <section class="ovryn-tees ovryn-reveal">
+
+    <div class="ovryn-section-header">
+
+      <div>
+        <span>04 / COLLECTION</span>
+        <h2>TEES.</h2>
+      </div>
+
+      <a href="{% if tees_collection != blank %}{{ tees_collection.url }}{% else %}{{ shop_collection_url }}{% endif %}">
+        SHOP TEES ↗
+      </a>
+
+    </div>
+
+
+    <a
+      href="{% if tees_collection != blank %}{{ tees_collection.url }}{% else %}{{ shop_collection_url }}{% endif %}"
+      class="ovryn-tees-image"
+    >
+
+      {% if section.settings.tees_image != blank %}
+
+        <img
+          src="{{ section.settings.tees_image | image_url: width: 2200 }}"
+          srcset="
+            {{ section.settings.tees_image | image_url: width: 750 }} 750w,
+            {{ section.settings.tees_image | image_url: width: 1200 }} 1200w,
+            {{ section.settings.tees_image | image_url: width: 1800 }} 1800w,
+            {{ section.settings.tees_image | image_url: width: 2200 }} 2200w
+          "
+          sizes="100vw"
+          width="{{ section.settings.tees_image.width }}"
+          height="{{ section.settings.tees_image.height }}"
+          alt="OVRYN T-shirts"
+          loading="lazy"
+        >
+
+      {% else %}
+
+        <div class="ovryn-tees-placeholder">
+          <span>OVRYN</span>
+          <small>UPLOAD TEES IMAGE</small>
+        </div>
+
+      {% endif %}
+
+      <div class="ovryn-tees-overlay"></div>
+
+      <div class="ovryn-tees-center">
+        <span>SHOP THE COLLECTION</span>
+        <strong>TEES ↗</strong>
+      </div>
+
+    </a>
+
+  </section>
+
+
+  <!-- ================= NEWSLETTER ================= -->
+
+  <section class="ovryn-newsletter ovryn-reveal">
+
+    <div class="ovryn-newsletter-top">
+      <span>05 / ACCESS</span>
+      <span>NO SPAM. JUST OVRYN.</span>
+    </div>
+
+    <div class="ovryn-newsletter-main">
+
+      <div class="ovryn-label">
+        JOIN THE OUTSIDERS.
+      </div>
+
+      <h2>
+        STAY<br>
+        <em>UNFOLLOWED.</em>
+      </h2>
+
+      {% form 'customer', class: 'ovryn-newsletter-form' %}
+
+        <input
+          type="hidden"
+          name="contact[tags]"
+          value="newsletter"
+        >
+
+        <label for="ovryn-email-{{ section.id }}">
+          EMAIL ADDRESS
+        </label>
+
+        <div class="ovryn-email-row">
+
+          <input
+            id="ovryn-email-{{ section.id }}"
+            type="email"
+            name="contact[email]"
+            placeholder="YOUR EMAIL"
+            autocomplete="email"
+            required
+          >
+
+          <button type="submit">
+            SUBSCRIBE ↗
+          </button>
+
+        </div>
+
+        {% if form.posted_successfully? %}
+          <p class="ovryn-success">
+            YOU'RE IN.
+          </p>
+        {% endif %}
+
+        {% if form.errors %}
+          <div class="ovryn-error">
+            {{ form.errors | default_errors }}
+          </div>
+        {% endif %}
+
+      {% endform %}
+
+      <p class="ovryn-newsletter-note">
+        EARLY ACCESS / NEW DROPS / NOTHING ORDINARY
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= FOOTER ================= -->
+
+  <footer class="ovryn-footer">
+
+    <div class="ovryn-footer-brand-row">
+
+      <div class="ovryn-footer-brand">
+        OVRYN
+      </div>
+
+      <p>
+        {{ section.settings.tagline }}
+      </p>
+
+    </div>
+
+
+    <div class="ovryn-footer-grid">
+
+      <div class="ovryn-footer-column">
+
+        <span>SHOP</span>
+
+        <a href="{{ shop_collection_url }}">
+          ALL TEES
+        </a>
+
+        <a href="{% if tees_collection != blank %}{{ tees_collection.url }}{% else %}{{ shop_collection_url }}{% endif %}">
+          TEES
+        </a>
+
+        {% if featured_collection != blank %}
+
+          <a href="{{ featured_collection.url }}">
+            THE DROP
+          </a>
+
+        {% endif %}
+
+      </div>
+
+
+      <div class="ovryn-footer-column">
+
+        <span>INFO</span>
+
+        {% if section.settings.about_page != blank %}
+          <a href="{{ section.settings.about_page.url }}">
+            ABOUT
+          </a>
+        {% endif %}
+
+        {% if section.settings.contact_page != blank %}
+          <a href="{{ section.settings.contact_page.url }}">
+            CONTACT
+          </a>
+        {% endif %}
+
+        {% if section.settings.shipping_policy != blank %}
+          <a href="{{ section.settings.shipping_policy.url }}">
+            SHIPPING
+          </a>
+        {% endif %}
+
+        {% if section.settings.returns_page != blank %}
+          <a href="{{ section.settings.returns_page.url }}">
+            RETURNS &amp; EXCHANGES
+          </a>
+        {% endif %}
+
+      </div>
+
+
+      <div class="ovryn-footer-column">
+
+        <span>FOLLOW</span>
+
+        {% if section.settings.instagram_url != blank %}
+
+          <a
+            href="{{ section.settings.instagram_url }}"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            INSTAGRAM ↗
+          </a>
+
+        {% endif %}
+
+        {% if section.settings.tiktok_url != blank %}
+
+          <a
+            href="{{ section.settings.tiktok_url }}"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            TIKTOK ↗
+          </a>
+
+        {% endif %}
+
+      </div>
+
+
+      <div class="ovryn-footer-column">
+
+        <span>CONTACT</span>
+
+        {% if section.settings.contact_email != blank %}
+
+          <a href="mailto:{{ section.settings.contact_email }}">
+            {{ section.settings.contact_email }}
+          </a>
+
+        {% endif %}
+
+        <a href="{{ routes.cart_url }}">
+          CART / {{ cart.item_count }}
+        </a>
+
+      </div>
+
+    </div>
+
+
+    <div class="ovryn-footer-bottom">
+
+      <span>
+        © {{ 'now' | date: '%Y' }} OVRYN
+      </span>
+
+      <span>
+        {{ section.settings.tagline }}
+      </span>
+
+      {% if section.settings.privacy_policy != blank %}
+        <a href="{{ section.settings.privacy_policy.url }}">
+          PRIVACY
+        </a>
+      {% endif %}
+
+      {% if section.settings.terms_policy != blank %}
+        <a href="{{ section.settings.terms_policy.url }}">
+          TERMS
+        </a>
+      {% endif %}
+
+    </div>
+
+  </footer>
+
+</div>
+
+
+<style>
+
+#ovryn-{{ section.id }} {
+  --black:#050505;
+  --white:#f4f4f0;
+  --grey:#777;
+  --border:rgba(255,255,255,.13);
+
+  width:100%;
+  max-width:100%;
+  overflow:hidden;
+
+  background:var(--black);
+  color:var(--white);
+
+  font-family:Arial,Helvetica,sans-serif;
+
+  -webkit-font-smoothing:antialiased;
+}
+
+#ovryn-{{ section.id }} *,
+#ovryn-{{ section.id }} *::before,
+#ovryn-{{ section.id }} *::after {
+  box-sizing:border-box;
+}
+
+#ovryn-{{ section.id }} a {
+  color:inherit;
+  text-decoration:none;
+}
+
+#ovryn-{{ section.id }} button,
+#ovryn-{{ section.id }} input {
+  font:inherit;
+}
+
+
+/* HEADER */
+
+#ovryn-{{ section.id }} .ovryn-header {
+  position:absolute;
+  top:0;
+  left:0;
+  z-index:50;
+
+  width:100%;
+  height:82px;
+
+  display:grid;
+  grid-template-columns:1fr auto 1fr;
+  align-items:center;
+
+  padding:0 28px;
+
+  border-bottom:1px solid rgba(255,255,255,.12);
+
+  background:linear-gradient(
+    to bottom,
+    rgba(0,0,0,.5),
+    transparent
+  );
+}
+
+#ovryn-{{ section.id }} .ovryn-logo {
+  font-size:27px;
+  font-weight:900;
+  letter-spacing:-.09em;
+}
+
+#ovryn-{{ section.id }} .ovryn-nav {
+  display:flex;
+  gap:34px;
+}
+
+#ovryn-{{ section.id }} .ovryn-nav a,
+#ovryn-{{ section.id }} .ovryn-cart,
+#ovryn-{{ section.id }} .ovryn-search {
+  font-size:9px;
+  font-weight:700;
+  letter-spacing:.17em;
+  transition:opacity .25s ease;
+}
+
+#ovryn-{{ section.id }} .ovryn-nav a:hover,
+#ovryn-{{ section.id }} .ovryn-cart:hover,
+#ovryn-{{ section.id }} .ovryn-search:hover {
+  opacity:.6;
+}
+
+#ovryn-{{ section.id }} .ovryn-actions {
+  justify-self:end;
+
+  display:flex;
+  align-items:center;
+  gap:20px;
+}
+
+#ovryn-{{ section.id }} .ovryn-search svg {
+  width:18px;
+  height:18px;
+
+  fill:none;
+  stroke:currentColor;
+  stroke-width:1.4;
+}
+
+#ovryn-{{ section.id }} .ovryn-cart sup {
+  position:relative;
+  top:-4px;
+  font-size:7px;
+}
+
+#ovryn-{{ section.id }} .ovryn-menu-open {
+  display:none;
+
+  width:40px;
+  height:40px;
+
+  padding:0;
+  border:0;
+
+  background:transparent;
+}
+
+#ovryn-{{ section.id }} .ovryn-menu-open span {
+  display:block;
+
+  width:19px;
+  height:1px;
+
+  margin:5px auto;
+
+  background:#fff;
+}
+
+
+/* MOBILE MENU */
+
+#ovryn-{{ section.id }} .ovryn-mobile-menu {
+  position:fixed;
+  inset:0;
+
+  z-index:999;
+
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+
+  padding:28px;
+
+  background:#050505;
+
+  opacity:0;
+  visibility:hidden;
+
+  transform:translateY(-15px);
+
+  transition:
+    opacity .35s ease,
+    visibility .35s ease,
+    transform .35s ease;
+}
+
+#ovryn-{{ section.id }} .ovryn-mobile-menu.is-open {
+  opacity:1;
+  visibility:visible;
+  transform:translateY(0);
+}
+
+#ovryn-{{ section.id }} .ovryn-mobile-top {
+  display:flex;
+  justify-content:space-between;
+
+  font-size:8px;
+  letter-spacing:.18em;
+}
+
+#ovryn-{{ section.id }} .ovryn-menu-close {
+  border:0;
+  background:none;
+  color:#fff;
+
+  font-size:8px;
+  letter-spacing:.15em;
+}
+
+#ovryn-{{ section.id }} .ovryn-mobile-links {
+  display:flex;
+  flex-direction:column;
+}
+
+#ovryn-{{ section.id }} .ovryn-mobile-links a {
+  display:flex;
+  align-items:baseline;
+  gap:12px;
+
+  padding:14px 0;
+
+  border-bottom:1px solid var(--border);
+
+  font-size:clamp(48px,15vw,90px);
+  line-height:.82;
+
+  letter-spacing:-.08em;
+}
+
+#ovryn-{{ section.id }} .ovryn-mobile-links small {
+  font-size:7px;
+  letter-spacing:.1em;
+}
+
+#ovryn-{{ section.id }} .ovryn-mobile-bottom {
+  color:#666;
+
+  font-size:8px;
+  letter-spacing:.17em;
+}
+
+
+/* HERO */
+
+#ovryn-{{ section.id }} .ovryn-hero {
+  position:relative;
+
+  width:100%;
+  height:100vh;
+  min-height:680px;
+
+  overflow:hidden;
+
+  background:#080808;
+}
+
+#ovryn-{{ section.id }} .ovryn-hero-image {
+  position:absolute;
+  inset:0;
+
+  width:100%;
+  height:100%;
+
+  object-fit:cover;
+
+  filter:
+    brightness(.45)
+    contrast(1.1)
+    saturate(.65);
+
+  transform:scale(1.04);
+
+  animation:ovrynZoom 14s ease-out forwards;
+}
+
+@keyframes ovrynZoom {
+  from { transform:scale(1.08); }
+  to { transform:scale(1); }
+}
+
+#ovryn-{{ section.id }} .ovryn-placeholder {
+  position:absolute;
+  inset:0;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  background:#101010;
+
+  color:#666;
+
+  font-size:9px;
+  letter-spacing:.2em;
+}
+
+#ovryn-{{ section.id }} .ovryn-hero-overlay {
+  position:absolute;
+  inset:0;
+
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(0,0,0,.6),
+      rgba(0,0,0,.05) 40%,
+      rgba(0,0,0,.8)
+    );
+}
+
+#ovryn-{{ section.id }} .ovryn-hero-content {
+  position:relative;
+  z-index:2;
+
+  width:100%;
+  height:100%;
+
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+
+  padding:115px 38px 28px;
+}
+
+#ovryn-{{ section.id }} .ovryn-hero-meta {
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+
+  font-size:8px;
+  font-weight:700;
+  letter-spacing:.18em;
+}
+
+#ovryn-{{ section.id }} .ovryn-hero-meta:nth-child(2) {
+  text-align:center;
+}
+
+#ovryn-{{ section.id }} .ovryn-hero-meta span:nth-child(2) {
+  text-align:center;
+}
+
+#ovryn-{{ section.id }} .ovryn-hero-meta span:last-child {
+  text-align:right;
+}
+
+#ovryn-{{ section.id }} .ovryn-hero-center {
+  text-align:center;
+}
+
+#ovryn-{{ section.id }} .ovryn-kicker {
+  margin-bottom:22px;
+
+  font-size:9px;
+  font-weight:700;
+  letter-spacing:.3em;
+}
+
+#ovryn-{{ section.id }} .ovryn-hero h1 {
+  margin:0;
+
+  font-size:clamp(100px,13.8vw,225px);
+
+  font-weight:900;
+  line-height:.72;
+
+  letter-spacing:-.095em;
+}
+
+#ovryn-{{ section.id }} .ovryn-hero h1 em {
+  display:block;
+
+  color:transparent;
+
+  font-style:normal;
+
+  -webkit-text-stroke:1.2px rgba(255,255,255,.9);
+}
+
+#ovryn-{{ section.id }} .ovryn-button {
+  display:inline-flex;
+  align-items:center;
+  justify-content:space-between;
+
+  gap:50px;
+
+  min-width:220px;
+  height:54px;
+
+  margin-top:48px;
+  padding:0 18px;
+
+  border:1px solid rgba(255,255,255,.55);
+
+  font-size:8px;
+  font-weight:700;
+  letter-spacing:.17em;
+
+  transition:
+    background .3s ease,
+    color .3s ease,
+    transform .3s ease;
+}
+
+#ovryn-{{ section.id }} .ovryn-button:hover {
+  background:#fff;
+  color:#050505;
+  transform:translateY(-3px);
+}
+
+#ovryn-{{ section.id }} .ovryn-scroll {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  gap:13px;
+
+  font-size:7px;
+  letter-spacing:.18em;
+}
+
+#ovryn-{{ section.id }} .ovryn-scroll i {
+  display:block;
+
+  width:1px;
+  height:42px;
+
+  background:#aaa;
+
+  animation:ovrynScroll 1.8s ease-in-out infinite;
+}
+
+@keyframes ovrynScroll {
+  0%,100% { transform:scaleY(.4); }
+  50% { transform:scaleY(1); }
+}
+
+
+/* MARQUEE */
+
+#ovryn-{{ section.id }} .ovryn-marquee {
+  width:100%;
+  overflow:hidden;
+
+  padding:17px 0;
+
+  border-bottom:1px solid var(--border);
+
+  white-space:nowrap;
+}
+
+#ovryn-{{ section.id }} .ovryn-marquee-track {
+  display:flex;
+  width:max-content;
+  align-items:center;
+
+  gap:25px;
+
+  font-size:9px;
+  font-weight:700;
+  letter-spacing:.2em;
+
+  animation:ovrynMarquee 25s linear infinite;
+}
+
+#ovryn-{{ section.id }} .ovryn-marquee-track b {
+  color:#666;
+  font-size:7px;
+}
+
+@keyframes ovrynMarquee {
+  to {
+    transform:translateX(-50%);
+  }
+}
+
+
+/* INTRO */
+
+#ovryn-{{ section.id }} .ovryn-intro {
+  display:grid;
+  grid-template-columns:18% 82%;
+
+  min-height:720px;
+
+  padding:120px 38px;
+}
+
+#ovryn-{{ section.id }} .ovryn-number,
+#ovryn-{{ section.id }} .ovryn-label {
+  color:#888;
+
+  font-size:8px;
+  font-weight:700;
+  letter-spacing:.2em;
+}
+
+#ovryn-{{ section.id }} .ovryn-intro-content {
+  max-width:1100px;
+}
+
+#ovryn-{{ section.id }} .ovryn-intro h2 {
+  margin:50px 0 70px;
+
+  font-size:clamp(80px,12vw,190px);
+
+  font-weight:900;
+  line-height:.76;
+
+  letter-spacing:-.09em;
+}
+
+#ovryn-{{ section.id }} .ovryn-intro h2 em {
+  color:transparent;
+
+  font-style:normal;
+
+  -webkit-text-stroke:1px #777;
+}
+
+#ovryn-{{ section.id }} .ovryn-intro-bottom {
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+
+  gap:40px;
+}
+
+#ovryn-{{ section.id }} .ovryn-intro-bottom p {
+  max-width:440px;
+
+  margin:0;
+
+  color:#858585;
+
+  font-size:13px;
+  line-height:1.75;
+}
+
+#ovryn-{{ section.id }} .ovryn-intro-bottom a,
+#ovryn-{{ section.id }} .ovryn-section-header > a {
+  white-space:nowrap;
+
+  padding-bottom:9px;
+
+  border-bottom:1px solid #777;
+
+  font-size:8px;
+  font-weight:700;
+  letter-spacing:.17em;
+}
+
+
+/* PRODUCTS */
+
+#ovryn-{{ section.id }} .ovryn-products {
+  padding:100px 28px 130px;
+}
+
+#ovryn-{{ section.id }} .ovryn-section-header {
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+
+  margin-bottom:55px;
+}
+
+#ovryn-{{ section.id }} .ovryn-section-header span {
+  color:#777;
+
+  font-size:8px;
+  font-weight:700;
+  letter-spacing:.18em;
+}
+
+#ovryn-{{ section.id }} .ovryn-section-header h2 {
+  margin:20px 0 0;
+
+  font-size:clamp(75px,10vw,155px);
+
+  font-weight:900;
+  line-height:.75;
+
+  letter-spacing:-.09em;
+}
+
+#ovryn-{{ section.id }} .ovryn-product-grid {
+  display:grid;
+
+  grid-template-columns:repeat(4,minmax(0,1fr));
+
+  gap:18px;
+}
+
+#ovryn-{{ section.id }} .ovryn-product-card {
+  min-width:0;
+}
+
+#ovryn-{{ section.id }} .ovryn-product-image-wrap {
+  position:relative;
+
+  display:block;
+
+  overflow:hidden;
+
+  aspect-ratio:.78;
+
+  background:#101010;
+}
+
+#ovryn-{{ section.id }} .ovryn-product-image {
+  position:absolute;
+  inset:0;
+
+  width:100%;
+  height:100%;
+
+  object-fit:cover;
+
+  transition:
+    opacity .5s ease,
+    transform .8s cubic-bezier(.2,.7,.2,1);
+}
+
+#ovryn-{{ section.id }} .ovryn-hover-image {
+  opacity:0;
+}
+
+#ovryn-{{ section.id }} .ovryn-product-image-wrap:hover .ovryn-main-image {
+  transform:scale(1.045);
+}
+
+#ovryn-{{ section.id }} .ovryn-product-image-wrap:hover .ovryn-hover-image {
+  opacity:1;
+  transform:scale(1.025);
+}
+
+#ovryn-{{ section.id }} .ovryn-view-product {
+  position:absolute;
+
+  left:14px;
+  right:14px;
+  bottom:14px;
+
+  padding:13px;
+
+  background:rgba(0,0,0,.78);
+
+  font-size:7px;
+  font-weight:700;
+  letter-spacing:.16em;
+
+  text-align:center;
+
+  opacity:0;
+
+  transform:translateY(8px);
+
+  transition:
+    opacity .3s ease,
+    transform .3s ease;
+}
+
+#ovryn-{{ section.id }} .ovryn-product-image-wrap:hover .ovryn-view-product {
+  opacity:1;
+  transform:translateY(0);
+}
+
+#ovryn-{{ section.id }} .ovryn-product-info {
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+
+  padding-top:15px;
+
+  gap:15px;
+}
+
+#ovryn-{{ section.id }} .ovryn-product-info h3 {
+  margin:0 0 7px;
+
+  font-size:11px;
+  font-weight:700;
+}
+
+#ovryn-{{ section.id }} .ovryn-product-info p {
+  margin:0;
+
+  color:#666;
+
+  font-size:6px;
+  letter-spacing:.15em;
+}
+
+#ovryn-{{ section.id }} .ovryn-product-info strong {
+  font-size:9px;
+  white-space:nowrap;
+}
+
+#ovryn-{{ section.id }} .ovryn-empty {
+  min-height:300px;
+
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+
+  border:1px solid var(--border);
+
+  text-align:center;
+}
+
+#ovryn-{{ section.id }} .ovryn-empty strong {
+  font-size:40px;
+}
+
+#ovryn-{{ section.id }} .ovryn-empty p {
+  color:#777;
+  font-size:11px;
+}
+
+
+/* STATEMENT */
+
+#ovryn-{{ section.id }} .ovryn-statement {
+  position:relative;
+
+  min-height:760px;
+
+  display:flex;
+  align-items:center;
+
+  overflow:hidden;
+
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+}
+
+#ovryn-{{ section.id }} .ovryn-statement-bg {
+  position:absolute;
+  inset:0;
+
+  background:
+    radial-gradient(
+      circle at center,
+      #202020,
+      #050505 65%
+    );
+}
+
+#ovryn-{{ section.id }} .ovryn-statement-content {
+  position:relative;
+  z-index:1;
+
+  width:100%;
+
+  padding:90px 38px;
+}
+
+#ovryn-{{ section.id }} .ovryn-statement h2 {
+  margin:80px 0;
+
+  font-size:clamp(90px,13vw,210px);
+
+  font-weight:900;
+  line-height:.72;
+
+  letter-spacing:-.1em;
+}
+
+#ovryn-{{ section.id }} .ovryn-statement h2 em {
+  color:transparent;
+
+  font-style:normal;
+
+  -webkit-text-stroke:1.2px #777;
+}
+
+#ovryn-{{ section.id }} .ovryn-statement-footer {
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+
+  color:#777;
+
+  font-size:8px;
+  letter-spacing:.18em;
+}
+
+#ovryn-{{ section.id }} .ovryn-statement-footer span:nth-child(2) {
+  text-align:center;
+}
+
+#ovryn-{{ section.id }} .ovryn-statement-footer span:last-child {
+  text-align:right;
+}
+
+
+/* TEES */
+
+#ovryn-{{ section.id }} .ovryn-tees {
+  padding:120px 28px;
+}
+
+#ovryn-{{ section.id }} .ovryn-tees-image {
+  position:relative;
+
+  display:block;
+
+  width:100%;
+
+  aspect-ratio:2/1;
+
+  overflow:hidden;
+
+  background:#111;
+}
+
+#ovryn-{{ section.id }} .ovryn-tees-image img {
+  width:100%;
+  height:100%;
+
+  display:block;
+
+  object-fit:cover;
+
+  transition:transform 1s cubic-bezier(.2,.7,.2,1);
+}
+
+#ovryn-{{ section.id }} .ovryn-tees-image:hover img {
+  transform:scale(1.035);
+}
+
+#ovryn-{{ section.id }} .ovryn-tees-overlay {
+  position:absolute;
+  inset:0;
+
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(0,0,0,.05),
+      rgba(0,0,0,.7)
+    );
+}
+
+#ovryn-{{ section.id }} .ovryn-tees-center {
+  position:absolute;
+  inset:0;
+
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+}
+
+#ovryn-{{ section.id }} .ovryn-tees-center span {
+  margin-bottom:18px;
+
+  font-size:8px;
+  font-weight:700;
+  letter-spacing:.22em;
+}
+
+#ovryn-{{ section.id }} .ovryn-tees-center strong {
+  font-size:clamp(60px,10vw,150px);
+
+  font-weight:900;
+  line-height:.8;
+
+  letter-spacing:-.08em;
+}
+
+#ovryn-{{ section.id }} .ovryn-tees-placeholder {
+  position:absolute;
+  inset:0;
+
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+
+  background:#171717;
+}
+
+#ovryn-{{ section.id }} .ovryn-tees-placeholder span {
+  font-size:100px;
+  font-weight:900;
+}
+
+#ovryn-{{ section.id }} .ovryn-tees-placeholder small {
+  color:#777;
+
+  font-size:7px;
+  letter-spacing:.18em;
+}
+
+
+/* NEWSLETTER */
+
+#ovryn-{{ section.id }} .ovryn-newsletter {
+  padding:130px 38px;
+
+  border-top:1px solid var(--border);
+}
+
+#ovryn-{{ section.id }} .ovryn-newsletter-top {
+  display:flex;
+  justify-content:space-between;
+
+  color:#777;
+
+  font-size:8px;
+  letter-spacing:.18em;
+}
+
+#ovryn-{{ section.id }} .ovryn-newsletter-main {
+  max-width:1000px;
+
+  margin:100px auto 0;
+
+  text-align:center;
+}
+
+#ovryn-{{ section.id }} .ovryn-newsletter-main h2 {
+  margin:30px 0 65px;
+
+  font-size:clamp(80px,12vw,180px);
+
+  font-weight:900;
+  line-height:.72;
+
+  letter-spacing:-.09em;
+}
+
+#ovryn-{{ section.id }} .ovryn-newsletter-main h2 em {
+  color:transparent;
+
+  font-style:normal;
+
+  -webkit-text-stroke:1px #777;
+}
+
+#ovryn-{{ section.id }} .ovryn-newsletter-form {
+  max-width:650px;
+
+  margin:0 auto;
+
+  text-align:left;
+}
+
+#ovryn-{{ section.id }} .ovryn-newsletter-form label {
+  display:block;
+
+  margin-bottom:12px;
+
+  color:#777;
+
+  font-size:7px;
+  letter-spacing:.18em;
+}
+
+#ovryn-{{ section.id }} .ovryn-email-row {
+  display:flex;
+
+  border-bottom:1px solid #777;
+}
+
+#ovryn-{{ section.id }} .ovryn-email-row input {
+  flex:1;
+
+  min-width:0;
+
+  height:55px;
+
+  padding:0;
+
+  border:0;
+  outline:0;
+
+  background:transparent;
+
+  color:#fff;
+
+  font-size:10px;
+}
+
+#ovryn-{{ section.id }} .ovryn-email-row button {
+  border:0;
+
+  background:transparent;
+
+  color:#fff;
+
+  cursor:pointer;
+
+  font-size:7px;
+  font-weight:700;
+  letter-spacing:.15em;
+}
+
+#ovryn-{{ section.id }} .ovryn-success,
+#ovryn-{{ section.id }} .ovryn-error {
+  margin-top:15px;
+
+  font-size:8px;
+  letter-spacing:.12em;
+}
+
+#ovryn-{{ section.id }} .ovryn-newsletter-note {
+  margin-top:20px;
+
+  color:#555;
+
+  font-size:6px;
+  letter-spacing:.16em;
+}
+
+
+/* FOOTER */
+
+#ovryn-{{ section.id }} .ovryn-footer {
+  padding:70px 28px 25px;
+
+  border-top:1px solid var(--border);
+}
+
+#ovryn-{{ section.id }} .ovryn-footer-brand-row {
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+
+  padding-bottom:75px;
+}
+
+#ovryn-{{ section.id }} .ovryn-footer-brand {
+  font-size:clamp(110px,20vw,310px);
+
+  font-weight:900;
+
+  line-height:.68;
+
+  letter-spacing:-.11em;
+}
+
+#ovryn-{{ section.id }} .ovryn-footer-brand-row p {
+  max-width:190px;
+
+  margin:0;
+
+  color:#777;
+
+  font-size:8px;
+  line-height:1.6;
+
+  text-align:right;
+}
+
+#ovryn-{{ section.id }} .ovryn-footer-grid {
+  display:grid;
+
+  grid-template-columns:repeat(4,1fr);
+
+  gap:30px;
+
+  padding:45px 0;
+
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+}
+
+#ovryn-{{ section.id }} .ovryn-footer-column {
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+
+  gap:12px;
+}
+
+#ovryn-{{ section.id }} .ovryn-footer-column > span {
+  margin-bottom:10px;
+
+  color:#666;
+
+  font-size:7px;
+  font-weight:700;
+  letter-spacing:.18em;
+}
+
+#ovryn-{{ section.id }} .ovryn-footer-column a {
+  font-size:8px;
+  letter-spacing:.08em;
+}
+
+#ovryn-{{ section.id }} .ovryn-footer-column a:hover {
+  color:#777;
+}
+
+#ovryn-{{ section.id }} .ovryn-footer-bottom {
+  display:flex;
+  justify-content:space-between;
+
+  gap:20px;
+
+  padding-top:20px;
+
+  color:#555;
+
+  font-size:6px;
+  letter-spacing:.14em;
+}
+
+
+/* REVEAL */
+
+#ovryn-{{ section.id }} .ovryn-reveal {
+  opacity:0;
+  transform:translateY(30px);
+
+  transition:
+    opacity .8s ease,
+    transform .8s cubic-bezier(.2,.7,.2,1);
+}
+
+#ovryn-{{ section.id }} .ovryn-reveal.ovryn-visible {
+  opacity:1;
+  transform:translateY(0);
+}
+
+
+/* TABLET */
+
+@media screen and (max-width:990px) {
+
+  #ovryn-{{ section.id }} .ovryn-product-grid {
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+
+  #ovryn-{{ section.id }} .ovryn-intro {
+    grid-template-columns:1fr;
+    gap:60px;
+  }
+
+}
+
+
+/* MOBILE */
+
+@media screen and (max-width:749px) {
+
+  #ovryn-{{ section.id }} {
+    overflow-x:hidden;
+  }
+
+  #ovryn-{{ section.id }} .ovryn-header {
+    height:66px;
+
+    padding:0 15px;
+
+    grid-template-columns:1fr auto 1fr;
+  }
+
+  #ovryn-{{ section.id }} .ovryn-logo {
+    grid-column:2;
+
+    font-size:22px;
+  }
+
+  #ovryn-{{ section.id }} .ovryn-nav,
+  #ovryn-{{ section.id }} .ovryn-search {
+    display:none;
+  }
+
+  #ovryn-{{ section.id }} .ovryn-actions {
+    grid-column:3;
+
+    gap:10px;
+  }
+
+  #ovryn-{{ section.id }} .ovryn-cart {
+    font-size:7px;
+  }
+
+  #ovryn-{{ section.id }} .ovryn-menu-open {
+    display:block;
+  }
+
+
+  /* HERO */
+
+  #ovryn-{{ section.id }} .ovryn-hero {
+    height:88svh;
+
+    min-height:600px;
+    max-height:780px;
+  }
+
+  #ovryn-{{ section.id }} .ovryn-hero-content {
+    padding:91px 15px 20px;
+  }
+
+  #ovryn-{{ section.id }} .ovryn-hero-meta {
+    display:flex;
+    justify-content:space-between;
+
+    font-size:6px;
+  }
+
+  #ovryn-{{ section.id }} .ovryn-hero-meta span:nth-child(2) {
+    display:none;
+  }
+
+  #ovryn-{{ section.id }} .ovryn-kicker {
+    margin-bottom:17px;
+
+    font-size:6px;
+  }
+
+  #ovryn-{{ section.id }} .ovryn-hero h1 {
+    font-size:16.5vw;
+  }
+
+  #ovryn-{{ section.id }} .ovryn-button {
+    min-width:190px;
+
+    height:50px;
+
+    margin-top:35px;
+  }
+
+  #ovryn-{{ section.id }} .ovryn-scroll {
+    font-size:6px;
+  }
+
+
+  /* MARQUEE */
+
+  #ovryn-{{ section.id }} .ovryn-marquee {
+    padding:14px 0;
+  }
+
+  #ovryn-{{ section.id }} .ovryn-marquee-track {
+    gap:18px;
+
+    font-size:7px;
+
+    animation-duration:20s;
+  }
+
+
+  /* INTRO */
+
+  #ovryn-{{ section.id }} .ovryn-intro {
+    display:block;
+
+    min-height:auto;
+
+    padding:85px 18px 100px;
+  }
+
+  #ovryn-{{ section.id }} .ovryn-intro-content {
+    margin-top:60px;
+  }
+
+  #ovryn-{{ section.id }} .ovryn-intro h2 {
+    margin:25px 0 45px;
+
+    font-size:16vw;
+  }
+
+  #ovryn-{{ section.id }} .ovryn-intro-bottom {
+    display:block;
+  }
+
+  #ovryn-{{ section.id }} .ovryn-intro-bottom p {
+    font-size:11px;
+  }
+
+  #ovryn-{{ section.id }} .ovryn-intro-bottom a {
+    display:inline-block;
+
+    margin-top:28px;
+  }
+
+
+  /* PRODUCTS */
+
+  #ovryn-{{ section.id }} .ovryn-products {
+    padding:75px 15px 90px;
+  }
+
+  #ovryn-{{ section.id }} .ovryn-section-header {
+    margin-bottom:35px;
+  }
+
+  #ovryn-{{ section.id }} .ovryn-section-header h2 {
+    margin-top:13px;
+
+    font-size:17vw;
+  }
+
+  #ovryn-{{ section.id }} .ovryn-section-header > a {
+    font-size:6px;
+  }
+
+  #ovryn-{{ section.id }} .ovryn-product-grid {
+    grid-template-columns:1fr;
+
+    gap:45px;
+  }
+
+  #ovryn-{{ section.id }} .ovryn-product-image-wrap {
+    aspect-ratio:.86;
+  }
+
+  #ovryn-{{ section.id }} .ovryn-view-product {
+    opacity:1;
+
+    transform:none;
+
+    left:9px;
+    right:9px;
+    bottom:9px;
+
+    padding:11px;
+
+    font-size:6px;
+  }
+
+
+  /* STATEMENT */
+
+  #ovryn-{{ section.id }} .ovryn-statement {
+    min-height:610px;
+  }
+
+  #ovryn-{{ section.id }} .ovryn-statement-content {
+    padding:75px 18px;
+  }
+
+  #ovryn-{{ section.id }} .ovryn-statement h2 {
+    margin:60px 0;
+
+    font-size:16vw;
+  }
+
+  #ovryn-{{ section.id }} .ovryn-statement-footer {
+    font-size:6px;
+  }
+
+
+  /* TEES */
+
+  #ovryn-{{ section.id }} .ovryn-tees {
+    padding:80px 15px 90px;
+  }
+
+  #ovryn-{{ section.id }} .ovryn-tees-image {
+    aspect-ratio:.78;
+  }
+
+  #ovryn-{{ section.id }} .ovryn-tees-center strong {
+    font-size:20vw;
+  }
+
+  #ovryn-{{ section.id }} .ovryn-tees-center span {
+    font-size:6px;
+  }
+
+
+  /* NEWSLETTER */
+
+  #ovryn-{{ section.id }} .ovryn-newsletter {
+    padding:90px 18px;
+  }
+
+  #ovryn-{{ section.id }} .ovryn-newsletter-top {
+    font-size:6px;
+  }
+
+  #ovryn-{{ section.id }} .ovryn-newsletter-main {
+    margin-top:70px;
+  }
+
+  #ovryn-{{ section.id }} .ovryn-newsletter-main h2 {
+    margin:25px 0 50px;
+
+    font-size:16vw;
+  }
+
+  #ovryn-{{ section.id }} .ovryn-email-row input {
+    height:52px;
+
+    font-size:8px;
+  }
+
+
+  /* FOOTER */
+
+  #ovryn-{{ section.id }} .ovryn-footer {
+    padding:60px 15px 20px;
+  }
+
+  #ovryn-{{ section.id }} .ovryn-footer-brand-row {
+    display:block;
+
+    padding-bottom:60px;
+  }
+
+  #ovryn-{{ section.id }} .ovryn-footer-brand {
+    font-size:23vw;
+  }
+
+  #ovryn-{{ section.id }} .ovryn-footer-brand-row p {
+    max-width:100%;
+
+    margin-top:30px;
+
+    text-align:left;
+
+    font-size:7px;
+  }
+
+  #ovryn-{{ section.id }} .ovryn-footer-grid {
+    grid-template-columns:repeat(2,minmax(0,1fr));
+
+    gap:45px 20px;
+
+    padding:40px 0;
+  }
+
+  #ovryn-{{ section.id }} .ovryn-footer-column a {
+    font-size:7px;
+  }
+
+  #ovryn-{{ section.id }} .ovryn-footer-bottom {
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:12px;
+
+    font-size:5px;
+  }
+
+  #ovryn-{{ section.id }} .ovryn-footer-bottom span:nth-child(2) {
+    text-align:right;
+  }
+
+}
+
+
+/* SMALL PHONES */
+
+@media screen and (max-width:360px) {
+
+  #ovryn-{{ section.id }} .ovryn-hero {
+    min-height:570px;
+  }
+
+  #ovryn-{{ section.id }} .ovryn-hero h1 {
+    font-size:16vw;
+  }
+
+  #ovryn-{{ section.id }} .ovryn-mobile-menu {
+    padding:22px 18px;
+  }
+
+  #ovryn-{{ section.id }} .ovryn-mobile-links a {
+    font-size:14vw;
+  }
+
+}
+
+
+/* REDUCED MOTION */
+
+@media (prefers-reduced-motion:reduce) {
+
+  #ovryn-{{ section.id }} *,
+  #ovryn-{{ section.id }} *::before,
+  #ovryn-{{ section.id }} *::after {
+    animation:none !important;
+    transition:none !important;
+  }
+
+}
+
+</style>
+
+
+<script>
+
+(function() {
+
+  var root = document.getElementById('ovryn-{{ section.id }}');
+
+  if (!root) return;
+
+
+  /* MOBILE MENU ONLY */
+
+  var openButton = root.querySelector('.ovryn-menu-open');
+  var closeButton = root.querySelector('.ovryn-menu-close');
+  var mobileMenu = root.querySelector('.ovryn-mobile-menu');
+
+
+  if (openButton && mobileMenu) {
+
+    openButton.addEventListener('click', function() {
+
+      mobileMenu.classList.add('is-open');
+
+      document.body.style.overflow = 'hidden';
+
+    });
+
+  }
+
+
+  if (closeButton && mobileMenu) {
+
+    closeButton.addEventListener('click', function() {
+
+      mobileMenu.classList.remove('is-open');
+
+      document.body.style.overflow = '';
+
+    });
+
+  }
+
+
+  /* CLOSE MENU WHEN A REAL LINK IS CLICKED */
+
+  if (mobileMenu) {
+
+    var mobileLinks = mobileMenu.querySelectorAll('a');
+
+    mobileLinks.forEach(function(link) {
+
+      link.addEventListener('click', function() {
+
+        mobileMenu.classList.remove('is-open');
+
+        document.body.style.overflow = '';
+
+      });
+
+    });
+
+  }
+
+
+  /* ESCAPE */
+
+  document.addEventListener('keydown', function(event) {
+
+    if (event.key === 'Escape' && mobileMenu) {
+
+      mobileMenu.classList.remove('is-open');
+
+      document.body.style.overflow = '';
+
+    }
+
+  });
+
+
+  /* SCROLL REVEAL ONLY */
+
+  var reveals = root.querySelectorAll('.ovryn-reveal');
+
+  if ('IntersectionObserver' in window) {
+
+    var observer = new IntersectionObserver(function(entries) {
+
+      entries.forEach(function(entry) {
+
+        if (entry.isIntersecting) {
+
+          entry.target.classList.add('ovryn-visible');
+
+          observer.unobserve(entry.target);
+
+        }
+
+      });
+
+    }, {
+      threshold:0.08
+    });
+
+    reveals.forEach(function(element) {
+
+      observer.observe(element);
+
+    });
+
+  } else {
+
+    reveals.forEach(function(element) {
+
+      element.classList.add('ovryn-visible');
+
+    });
+
+  }
+
+})();
+
+</script>
+
+
+{% schema %}
+
+{
+  "name": "OVRYN Homepage",
+
+  "settings": [
+
+    {
+      "type": "header",
+      "content": "Hero"
+    },
+
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Hero Image"
+    },
+
+    {
+      "type": "text",
+      "id": "tagline",
+      "label": "Tagline",
+      "default": "UNFOLLOWING THE MID."
+    },
+
+    {
+      "type": "text",
+      "id": "hero_button_text",
+      "label": "Hero Button",
+      "default": "SHOP THE DROP"
+    },
+
+
+    {
+      "type": "header",
+      "content": "Collections"
+    },
+
+    {
+      "type": "collection",
+      "id": "featured_collection",
+      "label": "Featured / Drop Collection"
+    },
+
+    {
+      "type": "collection",
+      "id": "tees_collection",
+      "label": "T-Shirts Collection"
+    },
+
+    {
+      "type": "range",
+      "id": "product_limit",
+      "label": "Products To Show",
+      "min": 4,
+      "max": 12,
+      "step": 1,
+      "default": 8
+    },
+
+
+    {
+      "type": "header",
+      "content": "Tees Section"
+    },
+
+    {
+      "type": "image_picker",
+      "id": "tees_image",
+      "label": "Tees Image"
+    },
+
+
+    {
+      "type": "header",
+      "content": "Pages"
+    },
+
+    {
+      "type": "page",
+      "id": "about_page",
+      "label": "About Page"
+    },
+
+    {
+      "type": "page",
+      "id": "contact_page",
+      "label": "Contact Page"
+    },
+
+    {
+      "type": "page",
+      "id": "returns_page",
+      "label": "Return & Exchange Page"
+    },
+
+
+    {
+  "type": "header",
+  "content": "Policies"
+},
+
+{
+  "type": "url",
+  "id": "shipping_policy",
+  "label": "Shipping Policy Link"
+},
+
+{
+  "type": "url",
+  "id": "privacy_policy",
+  "label": "Privacy Policy Link"
+},
+
+{
+  "type": "url",
+  "id": "terms_policy",
+  "label": "Terms of Service Link"
+},
+
+
+    {
+      "type": "header",
+      "content": "Social"
+    },
+
+    {
+      "type": "url",
+      "id": "instagram_url",
+      "label": "Instagram"
+    },
+
+    {
+      "type": "url",
+      "id": "tiktok_url",
+      "label": "TikTok"
+    },
+
+    {
+      "type": "text",
+      "id": "contact_email",
+      "label": "Contact Email"
+    }
+
+  ],
+
+  "presets": [
+    {
+      "name": "OVRYN Homepage"
+    }
+  ]
+
+}
+
+{% endschema %}
